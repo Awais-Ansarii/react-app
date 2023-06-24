@@ -2,7 +2,7 @@ import { useState } from "react";
 import classes from "./pokemon.module.css";
 import PropTypes from "prop-types"
 import { useNavigate } from "react-router-dom";
-;
+
 const Pokemon = ({info}) => {
   const [bookmarked, setBookmarked] = useState(false);
 
