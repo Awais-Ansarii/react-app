@@ -7,24 +7,22 @@
 }
 
 .pokemonCard {
-  width: 18rem;
-  height: 23rem;
+  width: 20rem;
+  height: 25rem;
   border: 1px solid black;
   background-color: rgb(255, 255, 255, 0.9);
   border-radius: 5px;
   display: block;
   margin: auto;
-  position: relative;
   bottom: 9rem;
   box-sizing: border-box;
   text-align: center;
   box-shadow: 0.5px 0.5px 8px 1px black;
-  z-index: 1;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .bookmark {
-  z-index: 2;
-  position: absolute;
   top: 1rem;
   left: 1rem;
   width: 2rem;
@@ -39,8 +37,6 @@
 }
 
 .bookmarked {
-  z-index: 2;
-  position: absolute;
   top: 1rem;
   left: 1rem;
   width: 2rem;
@@ -54,23 +50,22 @@
   transform: scale(1.1);
 }
 
-img {
+.pokemonCard img {
   margin: auto;
-  width: 20rem;
+  width: 12rem;
   position: relative;
-  bottom: 4rem;
+  top: 1rem;
   display: block;
   margin: auto;
 }
 
 .info {
   position: relative;
-  bottom: 9.5rem;
+  bottom: 4rem;
 }
 
-h1 {
+.info h1 {
   display: block;
   margin: auto;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  line-height: 1.3;
 }

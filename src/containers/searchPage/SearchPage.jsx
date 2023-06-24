@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Pokemon from "../../components/pokemon/Pokemon";
 import FadeLoader from "react-spinners/FadeLoader";
 import Error from "../../components/Error/error";
+import Navbar from "../../components/navbar/Navbar";
 import classes from "./searchPage.module.css";
 
-const searchPage = () => {
+const SearchPage = () => {
   const [searchValue, setSearchValue] = useState("");
   const [pokemonData, setPokemonData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -49,7 +50,9 @@ const searchPage = () => {
 
   return (
     <>
-      <form className={classes.form}>
+      <Navbar />
+      <h1 className={classes.header}>Search for Your Favourite Pokemon!</h1>
+      <form className={classes.form} onSubmit={onFormSubmit}>
         <input
           className={classes.input}
           name="pokemon"
@@ -57,12 +60,9 @@ const searchPage = () => {
           placeholder="Search Pokemon"
           value={searchValue}
           onChange={(event) => onInputChange(event)}
+          required
         />
-        <button
-          className={classes.searchButton}
-          type="submit"
-          onClick={onFormSubmit}
-        >
+        <button className={classes.searchButton} type="submit">
           Search
         </button>
       </form>
@@ -77,4 +77,4 @@ const searchPage = () => {
   );
 };
 
-export default searchPage;
+export default SearchPage;

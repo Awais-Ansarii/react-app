@@ -1,41 +1,53 @@
-.form{
-    width: 30rem;
-    position: relative;
-    top:5rem;
-    margin: auto;
-    border: 1px solid black;
-    padding: 1rem;
-    justify-content: center;
-    background-color: #b87700;
-    box-shadow: 1px 2px 8px 2px black
+h1 {
+  font-size: 2rem;
+  color: black;
+  position: relative;
+  top: 5rem;
+  display: block;
+  text-align: center;
 }
 
-.input{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
-    width: 70%;
-    padding: 1rem;
-    border-radius: 10px;
-    background-color: #c4c4c4;
+.form {
+  width: 30rem;
+  position: relative;
+  top: 7rem;
+  margin: auto;
+  border: 1px solid black;
+  padding: 1rem;
+  justify-content: center;
+  background-color: #cc5500;
+  box-shadow: 1px 2px 8px 2px black;
 }
 
-.searchButton{
-    display: block;
-    width: 5rem;
-    margin: auto;
+.input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  width: 70%;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #c4c4c4;
+  box-shadow: 0.2px 0.2px 5px 0.5px white;
+  outline: none;
+  border: none;
 }
 
-.content{
-    display: block;
-    width: 70%;
-    position: relative;
-    top: 20rem;
-    margin-left: auto;
-    margin-right: auto;
+.searchButton {
+  display: block;
+  width: 5rem;
+  margin: auto;
 }
 
-.loader{
-    margin: auto
+.content {
+  display: block;
+  width: 70%;
+  position: relative;
+  top: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.loader {
+  margin: auto;
 }

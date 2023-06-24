@@ -1,12 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import classes from "./bookmarks.module.css";
+import { useSelector } from "react-redux";
 import { useCallback, useEffect, useState } from "react";
-import { addBookmark } from "../../features/bookmark-slice";
 import axios from "axios";
 import Pokemon from "../../components/pokemon/Pokemon";
+import classes from "./bookmarks.module.css";
+import Navbar from "../../components/navbar/Navbar";
 
 const Bookmarks = () => {
-  const dispatch = useDispatch();
   const [pokemons, setPokemons] = useState([]);
   const bookmarks = useSelector((state) => state.bookmarks);
 
@@ -39,14 +38,17 @@ const Bookmarks = () => {
   }, [getPokemons]);
 
   return (
-    <div>
-      <h1>Bookmarks</h1>
-      <div style={{ display: "flex" }}>
-        {pokemons.map((pokemon) => {
-          return <Pokemon info={pokemon} key={pokemon.id} />;
-        })}
+    <>
+      <Navbar />
+      <div className={classes.container}>
+        <h4>Bookmarks</h4>
+        <div className={classes.pokemons}>
+          {pokemons.map((pokemon) => {
+            return <Pokemon info={pokemon} key={pokemon.id} />;
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

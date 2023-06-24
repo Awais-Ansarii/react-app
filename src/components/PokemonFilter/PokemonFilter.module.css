@@ -1,8 +1,10 @@
 .container {
-  background-color: #ff2171;
+  background-color: #a14d6c;
   padding: 1rem 2rem;
   position: absolute;
   margin: 4rem;
+  z-index: 5;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .chips {
   display: flex;
@@ -16,5 +18,25 @@
   float: right;
   border: none;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 20px;
+  margin: 1rem;
+}
+.clear {
+  background-color: rgb(211, 166, 19);
+  color: white;
+  padding: 5px 10px;
+  float: right;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 1rem;
+}
+.close:hover {
+  background-color: black;
+}
+.clear:hover {
+  background-color: red;
+}
+.filterHeads {
+  font-size: 2rem;
 }
