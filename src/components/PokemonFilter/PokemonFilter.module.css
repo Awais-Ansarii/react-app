@@ -40,3 +40,16 @@
 .filterHeads {
   font-size: 2rem;
 }
+@media (width<=1700px) {
+  .container {
+    margin: 2rem;
+  }
+}
+@media (width<=1200px) {
+  .container {
+    margin: 1rem;
+  }
+  .filterHeads {
+    font-size: 1rem;
+  }
+}
