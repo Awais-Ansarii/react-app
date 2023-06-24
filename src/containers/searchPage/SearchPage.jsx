@@ -16,6 +16,7 @@ const SearchPage = () => {
   }, [pokemonData, ifError]);
 
   const onInputChange = (event) => {
+    setPokemonData({});
     event.preventDefault();
     setSearchValue(event.target.value);
   };
@@ -25,33 +26,28 @@ const SearchPage = () => {
     setIfError(!ifError);
     setLoading(true);
     axios
-      .get("https://pokeapi.co/api/v2/pokemon/" + [searchValue])
+      .get(
+        "https://pokeapi.co/api/v2/pokemon/" +
+          [searchValue.toLowerCase().trim()]
+      )
       .then((res) => {
         console.log(res.data);
         const data = JSON.parse(JSON.stringify(res.data));
         setPokemonData(data);
-        console.log(pokemonData);
       })
       .catch((err) => {
         console.log(err);
         setIfError(true);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
-  let contentComponent;
-
-  if (ifError) {
-    contentComponent = <div key="error">Result Not Found!</div>;
-  } else {
-    contentComponent = (
-      <Pokemon key="pokemon" info={pokemonData} loaded="false" />
-    );
-  }
-
   return (
-    <>
+    <div className={classes.container}>
       <Navbar />
-      <h1 className={classes.header}>Search for Your Favourite Pokemon!</h1>
+      <h2 className={classes.header}>Search for Your Favourite Pokemon!</h2>
       <form className={classes.form} onSubmit={onFormSubmit}>
         <input
           className={classes.input}
@@ -69,11 +65,13 @@ const SearchPage = () => {
       <div className={classes.content}>
         {loading ? (
           <FadeLoader className={classes.loader} color="red" />
-        ) : (
-          [contentComponent]
-        )}
+        ) : Object.keys(pokemonData).length > 0 ? (
+          <Pokemon key="pokemon" info={pokemonData} loaded="false" />
+        ) : ifError ? (
+          <span>Result Not Found</span>
+        ) : null}
       </div>
-    </>
+    </div>
   );
 };
 

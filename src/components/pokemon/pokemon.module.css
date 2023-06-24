@@ -7,10 +7,8 @@
 }
 
 .pokemonCard {
-  position: relative;
-  bottom: 12rem;
-  width: 16rem;
-  height: 19rem;
+  max-width: 20rem;
+  height: 25rem;
   border: 1px solid black;
   background-color: rgb(255, 255, 255, 0.9);
   border-radius: 5px;

@@ -2,7 +2,7 @@
   width: 100%;
   margin: auto;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  height: calc(100vh - 15rem);
+  height: calc(100vh - 10rem);
   overflow-y: scroll;
   overflow-x: clip;
   display: flex;
@@ -23,4 +23,7 @@
   width: fit-content;
   margin: 2rem;
   float: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
