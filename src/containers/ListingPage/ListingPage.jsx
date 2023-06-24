@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import Pokemon from "../../components/pokemon/Pokemon";
 import classes from "./ListingPage.module.css";
 import PokemonFilter from "../../components/PokemonFilter/PokemonFilter";
+import FadeLoader from "react-spinners/FadeLoader";
+
 const ListingPage = () => {
   const containerRef = useRef(null);
 
@@ -109,6 +111,11 @@ const ListingPage = () => {
           return <Pokemon key={index} info={pokemon} />;
         })}
       </div>
+      {loading && (
+        <div className={classes.loader}>
+          <FadeLoader color="red" />
+        </div>
+      )}
     </>
   );
 };

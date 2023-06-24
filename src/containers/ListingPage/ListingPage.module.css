@@ -3,7 +3,7 @@
   margin: auto;
   min-width: 98vw;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 15rem);
   overflow-y: scroll;
   overflow-x: clip;
   display: flex;
@@ -18,4 +18,10 @@
   margin: 1rem;
   color: white;
   font-size: 1.25rem;
+}
+
+.loader {
+  width: fit-content;
+  margin: 2rem;
+  float: right;
 }

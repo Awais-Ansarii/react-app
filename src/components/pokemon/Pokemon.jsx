@@ -3,6 +3,7 @@ import classes from "./pokemon.module.css";
 import PropTypes from "prop-types"
 ;
 const Pokemon = ({info}) => {
+  
   const [bookmarked, setBookmarked] = useState(false);
 
   console.log(info);
