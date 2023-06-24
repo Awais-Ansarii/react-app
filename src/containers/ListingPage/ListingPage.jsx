@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import Pokemon from "../../components/pokemon/pokemon";
+import Pokemon from "../../components/pokemon/Pokemon";
 import classes from "./ListingPage.module.css";
 import PokemonFilter from "../../components/PokemonFilter/PokemonFilter";
 const ListingPage = () => {
@@ -106,13 +106,7 @@ const ListingPage = () => {
         className={classes.container}
       >
         {filterPokemon.map((pokemon, index) => {
-          return (
-            <Pokemon
-              key={index}
-              url={pokemon.sprites.front_default}
-              name={pokemon.name}
-            />
-          );
+          return <Pokemon key={index} info={pokemon} />;
         })}
       </div>
     </>

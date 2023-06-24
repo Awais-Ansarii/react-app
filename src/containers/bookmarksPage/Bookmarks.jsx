@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './bookmarks.module.css';
 
-const bookmarks = () => {
+const Bookmarks = () => {
   return (
-    <div>bookmarks</div>
+    <div>Bookmarks</div>
   )
 }
 
-export default bookmarks
+export default Bookmarks

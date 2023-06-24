@@ -1,3 +1,72 @@
+.hidden{
+    visibility: hidden;
+}
+
+.show{
+    visibility: visible;
+}
+
+.pokemonCard{
+    width: 18rem;
+    height: 23rem;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255, 0.9);
+    border-radius: 5px;
+    display: block;
+    margin: auto;
+    position: relative;
+    bottom: 9rem;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0.5px 0.5px 8px 1px black;
+    z-index: 1;
+}
+
+.bookmark{
+    z-index: 2;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background-image: url('../../assets/save-instagram-black-lineal-18315.png');
+    background-size: contain;
+    transition: 0.1s all;
+}
+
+.bookmark:hover{
+    transform: scale(1.1);
+}
+
+.bookmarked{
+    z-index: 2;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    background-image: url('../../assets/yellow-save-instagram-bookmark-18319.png');
+    background-size: contain;
+    transition: 0.1s all;
+}
+
+.bookmarked:hover{
+    transform: scale(1.1);
+}
+
+img{
+    margin: auto;
+    width: 20rem;
+    position: relative;
+    bottom: 4rem;
+    display: block;
+    margin: auto;
+}
+
+.info{
+    position: relative;
+    bottom: 9.5rem;
+}
 
 h1{
     display: block;
