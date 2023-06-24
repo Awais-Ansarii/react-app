@@ -8,12 +8,14 @@
 
 .pokemonCard {
   max-width: 20rem;
+  width: 18rem;
   height: 25rem;
   border: 1px solid black;
   background-color: rgb(255, 255, 255, 0.9);
   border-radius: 5px;
   display: block;
   margin: auto;
+  bottom: 9rem;
   box-sizing: border-box;
   text-align: center;
   box-shadow: 0.5px 0.5px 8px 1px black;
@@ -50,17 +52,20 @@
 }
 
 .pokemonCard img {
-  position: relative;
-  bottom:1rem;
   margin: auto;
-  width: 8rem;
+  width: 12rem;
+  position: relative;
+  top: 1rem;
   display: block;
   margin: auto;
 }
 
-.info h1 {
+.info {
   position: relative;
-  bottom: 1rem;
+  bottom: 4rem;
+}
+
+.info h1 {
   display: block;
   margin: auto;
   line-height: 1.3;

@@ -28,9 +28,7 @@ const Bookmarks = () => {
     });
 
     const pokeResults = await Promise.all(resultPromises);
-    setPokemons((prev) => {
-      return [...prev, ...pokeResults];
-    });
+    setPokemons(pokeResults);
   }, [bookmarks, getPokemonById]);
 
   useEffect(() => {
