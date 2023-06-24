@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Pokemon from "../../components/pokemon/Pokemon";
 import FadeLoader from "react-spinners/FadeLoader";
-import Error from "../../components/Error/error";
 import Navbar from "../../components/navbar/Navbar";
 import classes from "./searchPage.module.css";
 
@@ -23,6 +22,7 @@ const SearchPage = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
+    setIfError(!ifError);
     setLoading(true);
     axios
       .get("https://pokeapi.co/api/v2/pokemon/" + [searchValue])
@@ -41,7 +41,7 @@ const SearchPage = () => {
   let contentComponent;
 
   if (ifError) {
-    contentComponent = <Error key="error" />;
+    contentComponent = <div key="error">Result Not Found!</div>;
   } else {
     contentComponent = (
       <Pokemon key="pokemon" info={pokemonData} loaded="false" />
@@ -50,32 +50,29 @@ const SearchPage = () => {
 
   return (
     <>
-        <Navbar />
-        <h1>Search for Your Favourite Pokemon!</h1>
-        <form className={classes.form}>
-            <input
-            className={classes.input}
-            name="pokemon"
-            type="text"
-            placeholder="Search Pokemon"
-            value={searchValue}
-            onChange={(event) => onInputChange(event)}
-            />
-            <button
-            className={classes.searchButton}
-            type="submit"
-            onClick={onFormSubmit}
-            >
-            Search
-            </button>
-        </form>
-        <div className={classes.content}>
-            {loading ? (
-            <FadeLoader className={classes.loader} color="red" />
-            ) : (
-            [contentComponent]
-            )}
-        </div>
+      <Navbar />
+      <h1 className={classes.header}>Search for Your Favourite Pokemon!</h1>
+      <form className={classes.form} onSubmit={onFormSubmit}>
+        <input
+          className={classes.input}
+          name="pokemon"
+          type="text"
+          placeholder="Search Pokemon"
+          value={searchValue}
+          onChange={(event) => onInputChange(event)}
+          required
+        />
+        <button className={classes.searchButton} type="submit">
+          Search
+        </button>
+      </form>
+      <div className={classes.content}>
+        {loading ? (
+          <FadeLoader className={classes.loader} color="red" />
+        ) : (
+          [contentComponent]
+        )}
+      </div>
     </>
   );
 };

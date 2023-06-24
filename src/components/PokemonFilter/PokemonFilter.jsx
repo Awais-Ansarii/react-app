@@ -66,6 +66,19 @@ const PokemonFilter = ({ filter, setFilter, setOpenFilterModal }) => {
       >
         Close
       </button>
+      <button
+        onClick={() =>
+          setFilter({
+            type: "",
+            move: "",
+            species: "",
+            ability: "",
+          })
+        }
+        className={classes.clear}
+      >
+        Clear Filter
+      </button>
       <FilterCategory
         category={moves}
         title="move"

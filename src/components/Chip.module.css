@@ -5,6 +5,11 @@
   color: rgb(8, 9, 9);
   background-color: white;
   text-transform: capitalize;
+  cursor: pointer;
+}
+
+.container:hover {
+  scale: 105%;
 }
 
 .active {

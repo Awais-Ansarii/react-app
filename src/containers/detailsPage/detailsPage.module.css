@@ -1,0 +1,39 @@
+.detailsContainer{
+    display: block;
+    margin: auto;
+    height: 40rem;
+    width: 70%;
+    position: relative;
+    top: 3rem;
+    background-color: white;
+    box-shadow: 0.5px 0.5px 5px 0.5px black;
+}
+
+.infoContainer{
+    background-color: #E97451;
+    padding: 1rem;
+    box-shadow: 0.8px 0.8px 8px 0.5px black;
+}
+
+.detailsContainer h1{
+    text-align: center;
+}
+
+.detailsContainer img{
+    display: block;
+    margin: auto;
+    width: 15rem;
+}
+
+.detailsContainer h2{
+    text-align: center;
+}
+
+.moves{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+}
+

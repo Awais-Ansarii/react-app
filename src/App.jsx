@@ -1,4 +1,4 @@
-import SearchPage from "./containers/searchPage/searchPage";
+import SearchPage from "./containers/searchPage/SearchPage";
 import { Route, Routes } from "react-router-dom";
 import ListingPage from "./containers/ListingPage/ListingPage";
 import Bookmarks from "./containers/bookmarksPage/Bookmarks";
