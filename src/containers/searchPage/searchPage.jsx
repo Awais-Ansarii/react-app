@@ -1,10 +1,20 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import classes from './searchPage.module.css'
+import Pokemon from '../../components/pokemon/pokemon';
+import FadeLoader from 'react-spinners/FadeLoader'
+import Error from '../../components/Error/error';
+import classes from './searchPage.module.css';
 
 const searchPage = () => {
 
     const [searchValue, setSearchValue] = useState("");
+    const [pokemonData, setPokemonData] = useState({});
+    const [loading, setLoading] = useState(false);
+    const [ifError, setIfError] = useState(false);
+
+    useEffect(() => {
+        setLoading(false);
+    }, [pokemonData, ifError]);
 
     const onInputChange = (event) => {
         event.preventDefault();
@@ -13,10 +23,26 @@ const searchPage = () => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
+        setLoading(true);
         axios.get('https://pokeapi.co/api/v2/pokemon/' + [searchValue])
         .then(res => {
             console.log(res.data);
-        }).catch(err => console.log(err));
+            const data = JSON.parse(JSON.stringify(res.data))
+            setPokemonData(data);
+            console.log(pokemonData);
+        }).catch(err => {
+            console.log(err);
+            setIfError(true);
+        });
+    }
+
+    let contentComponent;
+
+    if(ifError){
+        contentComponent = <Error key = "error"/>
+    }
+    else{
+        contentComponent = <Pokemon key = "pokemon" info = {pokemonData} loaded = "false" />
     }
 
   return (
@@ -25,6 +51,9 @@ const searchPage = () => {
             <input className = {classes.input} name = "pokemon" type = "text" placeholder = 'Search Pokemon' value = {searchValue} onChange = {event => onInputChange(event)} />
             <button className = {classes.searchButton} type = "submit" onClick = {onFormSubmit}>Search</button>
         </form>
+        <div className = {classes.content}>
+            {loading ? (<FadeLoader className = {classes.loader} color = "red" />) : [contentComponent]}
+        </div>
     </>
   )
 }
