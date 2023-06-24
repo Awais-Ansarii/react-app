@@ -1,11 +1,19 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import Pokemon from "../../components/pokemon/pokemon";
-
+import classes from "./ListingPage.module.css";
+import PokemonFilter from "../../components/PokemonFilter/PokemonFilter";
 const ListingPage = () => {
   const containerRef = useRef(null);
 
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState({
+    type: "",
+    move: "",
+    species: "",
+    ability: "",
+  });
+  const [openFilterModal, setOpenFilterModal] = useState(false);
 
   const handleScroll = () => {
     const container = containerRef.current;
@@ -36,18 +44,18 @@ const ListingPage = () => {
     try {
       setLoading(true);
       const response = await axios.get(nextEndpoint);
-      console.log(response.data);
       const { next, results } = response.data;
-      for await (const result of results) {
-        let pokemon = await getOnePokemon(result["url"]);
-        // find pokemon existing in pokemons array
-        const index = pokemons.findIndex((x) => x.id === pokemon.id);
-        if (index == -1) {
-          setPokemons((prev) => {
-            return [...prev, pokemon];
-          });
-        }
-      }
+
+      const resultPromises = [];
+      results.forEach((element) => {
+        const promise = getOnePokemon(element.url);
+        resultPromises.push(promise);
+      });
+
+      const pokeResults = await Promise.all(resultPromises);
+      setPokemons((prev) => {
+        return [...prev, ...pokeResults];
+      });
       setNextEndpoint(next);
     } catch (error) {
       console.log(error);
@@ -60,30 +68,54 @@ const ListingPage = () => {
     getMorePokemons();
   }, []);
 
+  const filterPokemon = pokemons.filter((pokemon) => {
+    const { type, move, species, ability } = filter;
+    const moveIndex = pokemon.moves.findIndex((x) => x.move.name === move);
+    const typeIndex = pokemon.types.findIndex((x) => x.type.name === type);
+    // species can only be one
+    const abilityIndex = pokemon.abilities.findIndex(
+      (x) => x.ability.name === ability
+    );
+
+    return (
+      (pokemon.species === species || species === "") &&
+      (moveIndex != -1 || move === "") &&
+      (abilityIndex != -1 || ability === "") &&
+      (typeIndex != -1 || type === "")
+    );
+  });
+
   return (
-    <div
-      onScroll={handleScroll}
-      ref={containerRef}
-      style={{
-        width: "100wh",
-        height: "98vh",
-        overflowY: "scroll",
-        overflowX: "clip",
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "start",
-      }}
-    >
-      {pokemons.map((pokemon, index) => {
-        return (
-          <Pokemon
-            key={index}
-            url={pokemon.sprites.front_default}
-            name={pokemon.name}
-          />
-        );
-      })}
-    </div>
+    <>
+      {openFilterModal && (
+        <PokemonFilter
+          filter={filter}
+          setFilter={setFilter}
+          setOpenFilterModal={setOpenFilterModal}
+        />
+      )}
+      <button
+        onClick={() => setOpenFilterModal(true)}
+        className={classes.filter}
+      >
+        Filter
+      </button>
+      <div
+        onScroll={handleScroll}
+        ref={containerRef}
+        className={classes.container}
+      >
+        {filterPokemon.map((pokemon, index) => {
+          return (
+            <Pokemon
+              key={index}
+              url={pokemon.sprites.front_default}
+              name={pokemon.name}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
 

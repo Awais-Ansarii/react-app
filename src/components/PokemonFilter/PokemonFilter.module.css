@@ -1,0 +1,20 @@
+.container {
+  background-color: #ff2171;
+  padding: 1rem 2rem;
+  position: absolute;
+  margin: 4rem;
+}
+.chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.close {
+  background-color: rgb(7, 101, 188);
+  color: white;
+  padding: 5px 10px;
+  float: right;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}

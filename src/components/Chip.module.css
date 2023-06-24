@@ -1,0 +1,18 @@
+.container {
+  width: fit-content;
+  padding: 10px;
+  border-radius: 3rem;
+  color: rgb(8, 9, 9);
+  background-color: white;
+  text-transform: capitalize;
+}
+
+.active {
+  background-color: gray;
+  color: white;
+}
+
+.reset {
+  background-color: black;
+  color: white;
+}
