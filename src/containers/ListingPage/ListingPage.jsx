@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Pokemon from "../../components/pokemon/Pokemon";
 import classes from "./ListingPage.module.css";
 import PokemonFilter from "../../components/PokemonFilter/PokemonFilter";
+import Navbar from "../../components/navbar/Navbar";
 const ListingPage = () => {
   const containerRef = useRef(null);
 
@@ -28,7 +29,7 @@ const ListingPage = () => {
 
   const [pokemons, setPokemons] = useState([]);
   const [nextEndpoint, setNextEndpoint] = useState(
-    "https://pokeapi.co/api/v2/pokemon?limit=10"
+    "https://pokeapi.co/api/v2/pokemon?limit=12"
   );
 
   const getOnePokemon = async (url) => {
@@ -87,6 +88,7 @@ const ListingPage = () => {
 
   return (
     <>
+      <Navbar />
       {openFilterModal && (
         <PokemonFilter
           filter={filter}
@@ -105,9 +107,11 @@ const ListingPage = () => {
         ref={containerRef}
         className={classes.container}
       >
-        {filterPokemon.map((pokemon, index) => {
-          return <Pokemon key={index} info={pokemon} />;
-        })}
+        <div className = {classes.pokeList}>
+          {filterPokemon.map((pokemon, index) => {
+            return <Pokemon key={index} info={pokemon} />;
+          })}
+        </div>
       </div>
     </>
   );

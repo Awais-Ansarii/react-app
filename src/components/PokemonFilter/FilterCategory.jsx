@@ -13,7 +13,7 @@ const FilterCategory = ({ category, title, filter, setFilter }) => {
     <>
       {category?.length > 0 && (
         <div>
-          <h1>Filter By {title} :</h1>
+          <h1 className = {classes.filterHeads} >Filter By {title} :</h1>
           <div className={classes.chips}>
             {category.map((item) => {
               const { name } = item;

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Pokemon from "../../components/pokemon/Pokemon";
 import FadeLoader from "react-spinners/FadeLoader";
 import Error from "../../components/Error/error";
+import Navbar from "../../components/navbar/Navbar";
 import classes from "./searchPage.module.css";
 
-const searchPage = () => {
+const SearchPage = () => {
   const [searchValue, setSearchValue] = useState("");
   const [pokemonData, setPokemonData] = useState({});
   const [loading, setLoading] = useState(false);
@@ -49,32 +50,34 @@ const searchPage = () => {
 
   return (
     <>
-      <form className={classes.form}>
-        <input
-          className={classes.input}
-          name="pokemon"
-          type="text"
-          placeholder="Search Pokemon"
-          value={searchValue}
-          onChange={(event) => onInputChange(event)}
-        />
-        <button
-          className={classes.searchButton}
-          type="submit"
-          onClick={onFormSubmit}
-        >
-          Search
-        </button>
-      </form>
-      <div className={classes.content}>
-        {loading ? (
-          <FadeLoader className={classes.loader} color="red" />
-        ) : (
-          [contentComponent]
-        )}
-      </div>
+        <Navbar />
+        <h1>Search for Your Favourite Pokemon!</h1>
+        <form className={classes.form}>
+            <input
+            className={classes.input}
+            name="pokemon"
+            type="text"
+            placeholder="Search Pokemon"
+            value={searchValue}
+            onChange={(event) => onInputChange(event)}
+            />
+            <button
+            className={classes.searchButton}
+            type="submit"
+            onClick={onFormSubmit}
+            >
+            Search
+            </button>
+        </form>
+        <div className={classes.content}>
+            {loading ? (
+            <FadeLoader className={classes.loader} color="red" />
+            ) : (
+            [contentComponent]
+            )}
+        </div>
     </>
   );
 };
 
-export default searchPage;
+export default SearchPage;

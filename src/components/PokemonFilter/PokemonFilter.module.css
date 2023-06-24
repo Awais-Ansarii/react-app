@@ -3,6 +3,7 @@
   padding: 1rem 2rem;
   position: absolute;
   margin: 4rem;
+  z-index: 5;
 }
 .chips {
   display: flex;
@@ -17,4 +18,9 @@
   border: none;
   cursor: pointer;
   font-size: 15px;
+}
+
+.filterHeads{
+  position: relative;
+  bottom: 10rem;
 }
