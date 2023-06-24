@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import classes from "./pokemon.module.css";
-
-const Pokemon = (props) => {
+import PropTypes from "prop-types"
+;
+const Pokemon = ({info}) => {
   const [bookmarked, setBookmarked] = useState(false);
 
-  console.log(props.info);
+  console.log(info);
   let classList = [classes.pokemonCard];
   let imageURL = "";
-  let name = props.info.name;
+  let name = info.name;
 
-  if (Object.keys(props.info).length === 0) {
+  if (Object.keys(info).length === 0) {
     classList.push(classes.hidden);
   } else {
     classList.push(classes.show);
-    imageURL = props.info.sprites.front_default;
+    imageURL = info.sprites.front_default;
   }
 
   const bookmark = (event) => {
@@ -31,13 +32,15 @@ const Pokemon = (props) => {
         <img src={imageURL} alt="pokemon-image" />
         <div className={classes.info}>
           <h1 style={{ fontSize: "3rem" }}>{name}</h1>
-          <h1>EXP : {props.info.base_experience}</h1>
-          <h1>Height : {props.info.height}</h1>
-          <h1>Weight : {props.info.weight}</h1>
+          <h1>EXP : {info.base_experience}</h1>
+          <h1>Height : {info.height}</h1>
+          <h1>Weight : {info.weight}</h1>
         </div>
       </div>
     </>
   );
 };
+
+Pokemon.propTypes = {info: PropTypes.object.isRequired};
 
 export default Pokemon;
