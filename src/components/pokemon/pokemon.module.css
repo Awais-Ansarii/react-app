@@ -1,9 +1,7 @@
-.container {
-  background-color: azure;
-  margin: 1rem;
-  min-width: 10rem;
-  height: 10rem;
-  padding: 1rem;
-  text-align: center;
-  border-radius: 1rem;
+
+h1{
+    display: block;
+    margin: auto;
+    font-size: 1.5rem;
+    line-height: 1.5;
 }
