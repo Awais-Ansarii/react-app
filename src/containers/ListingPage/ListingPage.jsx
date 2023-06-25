@@ -9,7 +9,7 @@ import FadeLoader from "react-spinners/FadeLoader";
 const ListingPage = () => {
   const containerRef = useRef(null);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState({
     type: "",
     move: "",
@@ -22,7 +22,7 @@ const ListingPage = () => {
     const container = containerRef.current;
     if (container) {
       const { scrollTop, clientHeight, scrollHeight } = container;
-      const isBottom = scrollTop + clientHeight === scrollHeight;
+      const isBottom = scrollHeight - (scrollTop + clientHeight) <= 200;
       if (isBottom) {
         getMorePokemons();
       }
@@ -45,6 +45,7 @@ const ListingPage = () => {
 
   const getMorePokemons = async () => {
     try {
+      if (loading) return;
       setLoading(true);
       const response = await axios.get(nextEndpoint);
       const { next, results } = response.data;
